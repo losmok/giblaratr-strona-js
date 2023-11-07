@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styl6.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style w JavaScript</title>
+</head>
+<body>
+    <div class="left">
+        <h1>Konfigurator stylu</h1>
+        <p>Podaj kolor tła</p>
+        <button class="indigo" onclick="change('indigo')">Indigo</button>
+        <button class="steelblue" onclick="change('steelblue')">SteelBlue</button>
+        <button class="olive" onclick="change('olive')">Olive</button>
+        <p>Podaj kolor czcionki</p>
+        <select id="kolory" onclick="zmienKolor()">
+            <option value="white">White</option>
+            <option value="tan">Tan</option>
+            <option value="bisqe">Bisque</option>
+            <option value="plum">Plum</option>
+        </select>
+        <p>Podaj rozmiar czcionki w procentach np.200%</p>
+        <form>
+            <input type="number" id="rozmiar" oninput="zmienRozmiar()">
+        </form>
+        <p>Czy rysunek ma mieć ramke</p>
+        <form>
+            <label><input type="checkbox" checked>Rysuj ramkę</label>
+        </form>
+        <p>Jaki jest typ punktora listy?</p>
+        <form>
+            <label><input type="radio" checked>dysk</label>
+            <label><input type="radio">kwadrat</label> 
+            <label><input type="radio">okrąg</label>
+        </form>
+    </div>
+    <div class="right" id="right">
+        <img src="gibraltar.jpg" alt="półwysep Gibraltar">
+        <ul>
+            <li>element 1</li>
+            <li>element 2</li>
+            <li>element 3</li>
+        </ul><br>
+        <p class="text" id="loremipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="footer">
+        Autor: Paweł Lewandowski
+    </div>
+    <script>
+        function change(color) {
+            document.getElementById('right').style.backgroundColor = color;
+        }
+        
+        function zmienKolor(){
+            var lista = document.getElementById('kolory');
+            var wybranyKolor = lista.value;
+            var blokPrawy = document.getElementById('right');
+            blokPrawy.style.color = wybranyKolor;
+        }
+        function zmienRozmiar() {
+            var rozmiarInput = document.getElementById('rozmiar');
+            var nowyRozmiar = rozmiarInput.value + '%';
+            var tekstElement = document.getElementById('loremipsum');
+            tekstElement.style.fontSize = nowyRozmiar;
+        }
+    </script>
+</body>
+</html>
